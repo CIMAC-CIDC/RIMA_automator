@@ -1,0 +1,67 @@
+###############################################################################
+# Aashna Jhaveri 2021
+###############################################################################
+# Automator test configuration file
+###############################################################################
+
+# Give the new instance a unique name, e.g. the wes run name
+# NOTE: "wes-auto" will automatically be prepended to this string
+instance_name: "aashna-rima-test"
+
+# Define the number of cores for the wes instance
+# Options- 32 (default), 64, 96
+cores: 32
+
+# Define the disk size to use in GB, default 500
+# the name of the persistent disk will be: "wes_auto_{instance_name}_disk"
+disk_size: 250
+
+#DEFINE the path to the google bucket path for the run
+google_bucket_path: gs://aashna_bucket/rima_automator/test4/
+
+# Uncomment the following and define the specific wes commit string to use
+#wes_commit: c29b189
+#wes_commit: develop
+#rima_commit: "ff5483d"
+serviceAcct: "biofxvm@cidc-biofx.iam.gserviceaccount.com"
+#Uncomment the following and define the specific wes GCP image to use
+#NOTE: IF a specific GCP image is not set via config['image'], then
+#the default behavior is to get the latest wes image
+image: 'rima-auto-ver-0'
+#Define the wes reference snapshot to use, default wes-ref-ver1-0
+rima_ref_snapshot: 'rima-finalreference'
+
+
+# DEFINE the samples- each sample should have a name, e.g. SAMPLE1
+# and a Google bucket path to the input file,
+# e.g. gs://mybucket/data/sample1.fastq.gz
+# VALID INPUTS: fastq, fastq.gz
+# NOTE: for PAIRED-END fastq/fastq.gz, give both pairs to the sample:
+# SAMPLE_1_PE:
+#   - gs://mybucket/data/sample1_pair1.fastq
+#   - gs://mybucket/data/sample1_pair2.fastq
+samples:
+  mda-r1-pt1-Tumor:
+    - gs://harmonization/rna/pilot2/cidc_rna2/mda/Wistuba-CIMACRNAConcPilot2-Run1-MDA-4407-T-91a-T_CCW95ACXX-1-ACGCTCGA.R1.fastq.gz
+    - gs://harmonization/rna/pilot2/cidc_rna2/mda/Wistuba-CIMACRNAConcPilot2-Run1-MDA-4407-T-91a-T_CCW95ACXX-1-ACGCTCGA.R2.fastq.gz
+  #mda-r1-pt2-Tumor:
+    #- gs://mybucket/data/R1-1-F_HHTFLDSXX_R1.fastq.gz
+    #- gs://mybucket/data/R1-1-F_HHTFLDSXX_R2.fastq.gz
+
+#runs:
+  #run-mda-r1-pt1-Tumor:
+  #  - mda-r1-pt1-Tumor
+  #run-mda-r1-pt2-Tumor:
+    #- mda-r1-pt2-Tumor
+# metahseet- Group the samples into Tumor/Normal "runs"
+# each run should have a name, e.g. run_1:
+# then under each run, define a tumor and a normal sample
+# EXAMPLE:
+# metasheet:
+#  run_1:
+#    tumor: SAMPLE_Tumor
+#    normal: SAMPLE_normal
+metasheet:
+  mda-r1-pt1-Tumor:
+    SampleName: mda-r1-pt1-Tumor
+    PatName: mda-r1-pt1-Tumor

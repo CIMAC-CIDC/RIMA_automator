@@ -1,0 +1,63 @@
+#NOTE: you won't typically have to change the following two lines!
+metasheet: 'metasheet.csv'
+ref: "cidc_wes/ref.yaml"
+
+# IF YOU ARE using snakemake remote files then you will need to set the
+# 'remote_path' parameter to your (google) bucket path.
+# **REMEMBER to add the / to the end of the path**
+#
+# OTHERWISE, if running locally, LEAVE it commented out
+remote_path: "bucket_name/path/to/wes_project/"
+
+# The transfer bucket is used by the wes_automator transfer script to
+# tx the run AFTER a wes_automator run
+# transfer_bucket: "gs://some/bucket/path/wes_project/"
+# transfer_path: "gs://some/bucket/path/wes_project/"
+
+# CIMAC center: choices are {'mocha', 'mda', 'broad' (default)}
+#cimac_center: 'broad'
+
+# SOMATIC CALLER to use, options are {tnsnv, tnhaplotyper2, tnscope}
+# tnhaplotyper2 is the default EVEN if the somatic_caller param is NOT defined
+somatic_caller: tnhaplotyper2
+
+#Path to sentieon binary
+#NOTE: sentieon version 201808.07 has errors, so reverting to 201808.05
+sentieon_path: "/home/taing/sentieon/sentieon-genomics-201808.05/bin/"
+
+#Tell us what assembly to use (!! MUST be defined in chips/ref.yaml !!)
+assembly: hg38
+
+vcf2maf_bufferSize: 50000 #for standard8 #50000 for highmem-64
+
+# neoantigen module - Define which callers to use in a space-separated list
+# Callers avaliable:
+# 'MHCflurry', 'MHCnuggetsI', 'MHCnuggetsII', 'NNalign', 'NetMHC',
+# 'NetMHCIIpan', 'NetMHCcons', 'NetMHCpan', 'PickPocket', 'SMM',
+# 'SMMPMBEC', 'SMMalign'
+neoantigen_callers: "MHCflurry NetMHCcons MHCnuggetsII"
+
+# neoantigen module - Define which epitope lengths to analyze in comma
+# 	                  separated list
+neoantigen_epitope_lengths: "8,9,10,11"
+
+#effective_size: # of base-pairs covered in target regions
+effective_size: 30000000
+
+# DEFINE the samples- each sample should have a name, e.g. SAMPLE1
+# and a path to the input file, e.g. data/sample1.fastq.gz
+# VALID INPUTS: fastq, fastq.gz, bam
+# NOTE: for PAIRED-END fastq/fastq.gz, give both pairs to the sample:
+# SAMPLE_1_PE:
+#   - data/sample1_pair1.fastq
+#   - data/sample1_pair2.fastq
+# WARNING: DO not mix Paired-END and Single-End samples!!!
+# ALSO: having the string "rep" or '.' in your sample name will throw an ERROR
+# '.' causes Rscripts chop off names; and it's used as replicate splitter
+samples:
+  SAMPLE1:
+    - data/sample1.fastq.gz
+  SAMPLE1_input:
+    - data/sample1.input.fastq.gz
+  SAMPLE2:
+    - data/sample2.fastq.gz
