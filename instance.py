@@ -140,8 +140,10 @@ def get_instance_from_name(compute, machine_name, project, zone):
     
 def get_instance_ip(compute, instance_id, project, zone):
     result = get_instance(compute, instance_id, project, zone)
-    ip_addr = result['networkInterfaces'][0]['accessConfigs'][0]['natIP']
-    return ip_addr
+    #ip_addr = result['networkInterfaces'][0]['accessConfigs'][0]['natIP']
+    ext_ip_addr = result['networkInterfaces'][0]['accessConfigs'][0]['natIP']
+    int_ip_addr = result['networkInterfaces'][0]['networkIP']
+    return int_ip_addr
 
 def get_instance_ip_from_name(compute, machine_name, project, zone):
     result = get_instance_from_name(compute, machine_name, project, zone)
