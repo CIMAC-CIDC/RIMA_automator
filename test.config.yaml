@@ -6,7 +6,7 @@
 
 # Give the new instance a unique name, e.g. the wes run name
 # NOTE: "wes-auto" will automatically be prepended to this string
-instance_name: "aashna-rima-test"
+instance_name: "rima-auto-fast-test"
 
 # Define the number of cores for the wes instance
 # Options- 32 (default), 64, 96
