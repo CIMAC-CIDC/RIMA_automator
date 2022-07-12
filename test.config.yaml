@@ -7,7 +7,7 @@
 # Give the new instance a unique name, e.g. the wes run name
 # NOTE: "wes-auto" will automatically be prepended to this string
 instance_name: "rima-auto-fast-test"
-
+bam_input: True
 # Define the number of cores for the wes instance
 # Options- 32 (default), 64, 96
 cores: 64
@@ -27,9 +27,9 @@ serviceAcct: "biofxvm@cidc-biofx.iam.gserviceaccount.com"
 #Uncomment the following and define the specific wes GCP image to use
 #NOTE: IF a specific GCP image is not set via config['image'], then
 #the default behavior is to get the latest wes image
-image: 'rima-ver1-0'
+image: 'rima-ver3-0'
 #Define the wes reference snapshot to use, default wes-ref-ver1-0
-rima_ref_snapshot: 'rima-v27-reference'
+rima_ref_snapshot: 'rima-v27-reference-v-1-0'
 
 
 # DEFINE the samples- each sample should have a name, e.g. SAMPLE1
