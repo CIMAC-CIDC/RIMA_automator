@@ -4,16 +4,16 @@
 # Automator test configuration file
 ###############################################################################
 
-# Give the new instance a unique name, e.g. the wes run name
+# Give the new instance a unique name, e.g. the rima run name
 # NOTE: "wes-auto" will automatically be prepended to this string
-instance_name: "rima-essex-test-1"
+instance_name: "rima-essex-test"
 bam_input: False
-# Define the number of cores for the wes instance
+# Define the number of cores for the rima instance
 # Options- 32 (default), 64, 96
 cores: 64
 
 # Define the disk size to use in GB, default 500
-# the name of the persistent disk will be: "wes_auto_{instance_name}_disk"
+# the name of the persistent disk will be: "rima_auto_{instance_name}_disk"
 disk_size: 250
 
 #DEFINE the path to the google bucket path for the run
@@ -21,7 +21,7 @@ google_bucket_path: gs://aashna_bucket/rima_automator/test4/
 
 # Uncomment the following and define the specific rima commit string to use
 #rima_commit: "ff5483d"
-rima_commit: develop
+rima_commit: "6cf45a6"
 serviceAcct: "biofxvm@cidc-biofx.iam.gserviceaccount.com"
 #Uncomment the following and define the specific rima GCP image to use
 #NOTE: IF a specific GCP image is not set via config['image'], then
