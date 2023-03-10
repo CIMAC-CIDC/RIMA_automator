@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """Aashna Jhaveri 2020 (TGBTG)
-WES automator script to automatically run WES on GCP
+RIMA automator script to automatically run RIMA on GCP
 """
 
 import os
